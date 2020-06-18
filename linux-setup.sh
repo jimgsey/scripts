@@ -2,6 +2,9 @@
 echo "Running script as $(whoami)"
 cd ${HOME}
 
+echo "Installing needed packages for running the script..."
+sudo apt install unzip wget -y
+
 echo "Installing Platform Tools..."
 rm -rf platform-tools-latest-linux.zip ${HOME}/bin/platform-tools/
 wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip
@@ -11,7 +14,7 @@ printf '\n# add Android SDK platform tools to path \nif [ -d "$HOME/platform-too
 echo "Installing packages for building android..."
 sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev \
   lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush \
-  rsync schedtool squashfs-tools xsltproc zip zlib1g-dev libwxgtk3.0-dev -y
+  rsync schedtool squashfs-tools xsltproc zip zlib1g-dev -y
 
 echo "Installing repo..."
 mkdir -p ${HOME}/android/
