@@ -23,13 +23,18 @@ echo "Configuring git..."
 git config --global user.email "danimoral1001@gmail.com"
 git config --global user.name "daniml3"
 
+echo "Generating SSH key..."
+ssh-keygen -t rsa -C "danimoral1001@gmail.com"
+cat ${HOME}/.ssh/id_rsa.pub
+read -p "Add the SSH key to your GitHub account and press enter to continue..."
+
 echo "Cloning some repos and finishing..."
 cd ${HOME}/android
 if [ ! -d android ]; then
-git clone https://github.com/daniml3/android
+git clone git@github.com:daniml3/android
 fi
 if [ ! -d build ]; then
-git clone https://github.com/daniml3/android_build_tool build
+git clone git@github.com:daniml3/android_build_tool build
 fi
 
 echo "Cleaning up..."
