@@ -14,12 +14,11 @@ printf '\n# add Android SDK platform tools to path \nif [ -d "$HOME/platform-too
 echo "Installing packages for building android..."
 sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev \
   lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush \
-  rsync schedtool squashfs-tools xsltproc zip zlib1g-dev default-jre default-jdk -y
+  rsync schedtool squashfs-tools xsltproc zip zlib1g-dev default-jre default-jdk python python3 -y
 
 echo "Installing repo..."
 mkdir -p ${HOME}/android/
-curl https://storage.googleapis.com/git-repo-downloads/repo > ${HOME}/bin/repo
-chmod a+x ${HOME}/bin/repo
+sudo su -c 'curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/bin/repo && chmod +x /usr/bin/repo'
 printf '# set PATH so it includes the bin directory if it exists \nif [ -d "$HOME/bin" ] ; then \n    PATH="$HOME/bin:$PATH" \nfi\n' >> ${HOME}/.profile
 
 echo "Configuring git..."
